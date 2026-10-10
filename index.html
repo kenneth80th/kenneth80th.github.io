@@ -90,23 +90,35 @@
     text-align: center;
   }
 
-  /* two background layers drift at different speeds as you scroll */
-  .bg { position: absolute; left: 0; right: 0; top: -12%; bottom: -12%; pointer-events: none; }
+  /* two layers of white particles drift upward at different speeds as you scroll (parallax) */
+  .bg { position: absolute; left: 0; right: 0; top: 0; pointer-events: none; will-change: transform; }
   .bg-far {
-    transform: translate3d(0, calc(var(--p) * -4svh), 0);
+    bottom: -10%;
+    transform: translate3d(0, calc(var(--p) * -8svh), 0);
     background-image:
-      radial-gradient(circle at 10% 22%, rgba(235,208,138,.45) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 86% 14%, rgba(235,208,138,.35) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 74% 64%, rgba(235,208,138,.4) 0 1.5px, transparent 2.5px),
-      radial-gradient(circle at 18% 78%, rgba(235,208,138,.3) 0 1.5px, transparent 2.5px);
+      radial-gradient(circle at 96.1% 8.2%, rgba(255,255,255,0.33) 0 1.3px, transparent 2.5px),
+      radial-gradient(circle at 97.4% 18.4%, rgba(255,255,255,0.39) 0 1.6px, transparent 2.8px),
+      radial-gradient(circle at 10.5% 25.4%, rgba(255,255,255,0.34) 0 1.2px, transparent 2.4px),
+      radial-gradient(circle at 33.9% 34.0%, rgba(255,255,255,0.40) 0 1.2px, transparent 2.4px),
+      radial-gradient(circle at 1.8% 42.2%, rgba(255,255,255,0.25) 0 1.1px, transparent 2.3px),
+      radial-gradient(circle at 4.7% 55.6%, rgba(255,255,255,0.36) 0 1.3px, transparent 2.5px),
+      radial-gradient(circle at 4.7% 66.7%, rgba(255,255,255,0.29) 0 1.3px, transparent 2.5px),
+      radial-gradient(circle at 66.8% 73.9%, rgba(255,255,255,0.33) 0 1.4px, transparent 2.6px),
+      radial-gradient(circle at 7.6% 81.6%, rgba(255,255,255,0.29) 0 1.1px, transparent 2.3px),
+      radial-gradient(circle at 10.8% 98.4%, rgba(255,255,255,0.38) 0 1.5px, transparent 2.7px);
   }
   .bg-near {
-    transform: translate3d(0, calc(var(--p) * -11svh), 0);
+    bottom: -24%;
+    transform: translate3d(0, calc(var(--p) * -22svh), 0);
     background-image:
-      radial-gradient(circle at 92% 46%, rgba(235,208,138,.65) 0 2px, transparent 3px),
-      radial-gradient(circle at 6% 52%, rgba(235,208,138,.6) 0 2px, transparent 3px),
-      radial-gradient(circle at 60% 90%, rgba(235,208,138,.5) 0 2px, transparent 3px),
-      radial-gradient(circle at 34% 8%, rgba(235,208,138,.5) 0 2px, transparent 3px);
+      radial-gradient(circle at 90.8% 10.6%, rgba(255,255,255,0.53) 0 1.8px, transparent 3.0px),
+      radial-gradient(circle at 90.5% 20.6%, rgba(255,255,255,0.55) 0 2.2px, transparent 3.4px),
+      radial-gradient(circle at 98.9% 27.9%, rgba(255,255,255,0.59) 0 2.1px, transparent 3.3px),
+      radial-gradient(circle at 4.0% 47.7%, rgba(255,255,255,0.55) 0 1.8px, transparent 3.0px),
+      radial-gradient(circle at 4.3% 54.5%, rgba(255,255,255,0.47) 0 2.1px, transparent 3.3px),
+      radial-gradient(circle at 75.5% 67.1%, rgba(255,255,255,0.41) 0 2.3px, transparent 3.5px),
+      radial-gradient(circle at 97.0% 84.0%, rgba(255,255,255,0.57) 0 2.4px, transparent 3.6px),
+      radial-gradient(circle at 98.2% 90.2%, rgba(255,255,255,0.43) 0 2.0px, transparent 3.2px);
   }
 
   .stage-top, .art, .stage-bottom { position: relative; z-index: 1; }
@@ -139,15 +151,20 @@
     font-family: var(--display); font-weight: 600; font-size: clamp(3.4rem, 22vw, 7rem); color: var(--gold-hi);
     background: radial-gradient(circle at 50% 40%, var(--emerald-700), var(--emerald-950));
   }
-  .done .portrait { animation: glow 1.6s ease-out 1; }
-  @keyframes glow { 0% { box-shadow: 0 0 0 2px rgba(201,162,75,.6), 0 0 0 rgba(201,162,75,0); }
-                    45% { box-shadow: 0 0 0 2px var(--gold-hi), 0 0 56px rgba(235,208,138,.55); }
-                    100% { box-shadow: 0 0 0 2px rgba(201,162,75,.6), 0 0 38px rgba(201,162,75,.28); } }
+  /* Glow: its own layer, switched by one class. Only opacity and scale change, and CSS transitions
+     reverse smoothly from wherever they are, so scrolling back and forth mid-fade never glitches. */
+  .glow {
+    position: absolute; inset: -8%; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle closest-side, rgba(235,208,138,0) 55%, rgba(235,208,138,.46) 62%, rgba(235,208,138,.2) 79%, rgba(235,208,138,0) 100%);
+  }
+  .js .glow { opacity: 0; transform: scale(.94); transition: opacity .4s ease-in, transform .4s ease-in; will-change: opacity, transform; }
+  .js .done .glow { opacity: 1; transform: scale(1); transition: opacity .7s ease-out, transform .7s ease-out; }
 
   .stage-bottom { display: grid; gap: 10px; justify-items: center; }
   .date { font-family: var(--display); font-weight: 600; font-size: clamp(1.45rem, 6vw, 2rem); color: var(--gold-hi); }
   .countdown { min-height: 1.4em; font-size: .95rem; color: rgba(248,245,236,.78); }
-  .hint { font-size: .85rem; color: rgba(248,245,236,.6); opacity: 0; }
+  .hint { display: grid; justify-items: center; gap: 1px; font-size: .85rem; line-height: 1.2; color: rgba(248,245,236,.6); opacity: 0; }
+  .chev { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
   .js .hint { opacity: calc(1 - var(--p) * 22); }
 
   @media (max-height: 560px) {
@@ -209,6 +226,7 @@
       </header>
 
       <div class="art">
+        <div class="glow" aria-hidden="true"></div>
         <svg class="ring" viewBox="-8 -8 256 256" aria-hidden="true" focusable="false"><path class="track" d="M124.02 24.08A96 96 0 0 1 184.98 49.33"/><path class="track" d="M190.67 55.02A96 96 0 0 1 215.92 115.98"/><path class="track" d="M215.92 124.02A96 96 0 0 1 190.67 184.98"/><path class="track" d="M184.98 190.67A96 96 0 0 1 124.02 215.92"/><path class="track" d="M115.98 215.92A96 96 0 0 1 55.02 190.67"/><path class="track" d="M49.33 184.98A96 96 0 0 1 24.08 124.02"/><path class="track" d="M24.08 115.98A96 96 0 0 1 49.33 55.02"/><path class="track" d="M55.02 49.33A96 96 0 0 1 115.98 24.08"/><path class="arc" pathLength="1" d="M124.02 24.08A96 96 0 0 1 184.98 49.33"/><path class="arc" pathLength="1" d="M190.67 55.02A96 96 0 0 1 215.92 115.98"/><path class="arc" pathLength="1" d="M215.92 124.02A96 96 0 0 1 190.67 184.98"/><path class="arc" pathLength="1" d="M184.98 190.67A96 96 0 0 1 124.02 215.92"/><path class="arc" pathLength="1" d="M115.98 215.92A96 96 0 0 1 55.02 190.67"/><path class="arc" pathLength="1" d="M49.33 184.98A96 96 0 0 1 24.08 124.02"/><path class="arc" pathLength="1" d="M24.08 115.98A96 96 0 0 1 49.33 55.02"/><path class="arc" pathLength="1" d="M55.02 49.33A96 96 0 0 1 115.98 24.08"/><text class="lbl" x="198.49" y="41.51">10</text><text class="lbl" x="231.00" y="120.00">20</text><text class="lbl" x="198.49" y="198.49">30</text><text class="lbl" x="120.00" y="231.00">40</text><text class="lbl" x="41.51" y="198.49">50</text><text class="lbl" x="9.00" y="120.00">60</text><text class="lbl" x="41.51" y="41.51">70</text><text class="lbl lbl-end" x="120.00" y="9.00">80</text></svg>
         <div class="portrait">
           <div class="monogram" aria-hidden="true">80</div>
@@ -222,7 +240,7 @@
         <p class="date">Thursday, December 24, 2026</p>
         <p class="countdown" id="countdown"></p>
         <a class="btn btn-gold" href="#rsvp">RSVP</a>
-        <p class="hint">Scroll</p>
+        <p class="hint">Scroll<svg class="chev" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 6l5 5 5-5"/></svg></p>
       </div>
     </div>
   </section>
@@ -333,6 +351,12 @@
     /* Scroll scene: one progress value (0 to 1) drives the ring, photo, glow and parallax */
     if (!document.documentElement.classList.contains("js")) return;
 
+    /* Glow thresholds: on once the ring is complete (about 0.88), off only after scrolling back past 0.84.
+       The gap between the two stops flicker when the scroll position jitters near the edge. */
+    const GLOW_ON = 0.89;
+    const GLOW_OFF = 0.84;
+    let glowOn = false;
+
     function render(p) {
       scene.style.setProperty("--p", p.toFixed(4));
       const ringP = clamp((p - 0.04) / 0.84);
@@ -341,7 +365,8 @@
         arc.style.strokeDashoffset = (1 - v).toFixed(4);
         if (labels[i]) labels[i].classList.toggle("on", v >= 0.999);
       });
-      stage.classList.toggle("done", p > 0.95);
+      if (!glowOn && p >= GLOW_ON) { glowOn = true; stage.classList.add("done"); }
+      else if (glowOn && p < GLOW_OFF) { glowOn = false; stage.classList.remove("done"); }
     }
 
     let queued = false;
