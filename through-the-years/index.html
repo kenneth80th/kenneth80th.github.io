@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kenneth Mighty's 80th Birthday - December 24</title>
+<meta name="description" content="Join us to celebrate Kenneth Mighty's 80th birthday on Thursday, December 24. Please RSVP.">
+<meta name="theme-color" content="#04271C">
+
+<!-- Link preview (WhatsApp, iMessage, Facebook).
+     If the site address changes (for example a custom domain), update the two URLs below. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kenneth Mighty's 80th Birthday - December 24">
+<meta property="og:description" content="Join us to celebrate. Tap to see the details and RSVP.">
+<meta property="og:image" content="https://kenneth80th.github.io/daddy-share.jpg">
+<meta property="og:url" content="https://kenneth80th.github.io/through-the-years/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2304271C' stroke='%23C9A24B' stroke-width='3'/%3E%3Ctext x='32' y='41' font-size='26' font-family='Georgia,serif' text-anchor='middle' fill='%23EBD08A'%3E80%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&amp;display=swap">
+
+<script>
+  /* Scroll animation only runs when the visitor has not asked for reduced motion.
+     Without it, the page simply shows the finished state. */
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("js");
+  }
+</script>
+
+<style>
+  :root {
+    --emerald-950: #031A13;
+    --emerald-900: #04271C;
+    --emerald-700: #0B4D3A;
+    --emerald: #0B6E52;
+    --gold: #C9A24B;
+    --gold-hi: #EBD08A;
+    --ivory: #F8F5EC;
+    --white: #FFFFFF;
+    --black: #000000;
+    --display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ivory);
+    background: var(--black);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+  h1, h2 { font-family: var(--display); font-weight: 600; line-height: 1.05; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  a { color: inherit; }
+  .wrap { width: 100%; max-width: 640px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 52px; padding: 0 30px;
+    font: 600 1.0625rem/1 var(--body);
+    text-decoration: none; border-radius: 4px; cursor: pointer;
+    border: 1.5px solid var(--gold);
+    transition: background-color .2s, color .2s;
+  }
+  .btn-gold { background: var(--gold); color: var(--black); }
+  .btn-gold:hover { background: var(--gold-hi); }
+  .btn-line { background: transparent; color: var(--gold-hi); }
+  .btn-line:hover { background: rgba(201,162,75,.14); }
+  :focus-visible { outline: 3px solid var(--gold-hi); outline-offset: 3px; }
+
+  /* ---------- scroll scene ---------- */
+  /* Phone browsers show and hide their address bar while you scroll. "Large" is the screen with the bar
+     hidden, "small" is with it showing. The stage is as tall as the large screen so no black strip can
+     appear, and the difference is added as bottom padding so the content stays put. */
+  :root { --vh-large: 100vh; --vh-small: 100vh; }
+  @supports (height: 100lvh) { :root { --vh-large: 100lvh; --vh-small: 100svh; } }
+
+  .scene { --p: 1; position: relative; height: var(--vh-large); background: var(--black); }
+  .js .scene { height: calc(var(--vh-large) * 2.8); }
+
+  .stage {
+    position: sticky; top: 0; height: var(--vh-large); overflow: hidden;
+    display: grid; grid-template-rows: auto 1fr auto; justify-items: center; align-items: center;
+    padding: max(22px, env(safe-area-inset-top, 0px)) 20px calc(max(22px, env(safe-area-inset-bottom, 0px)) + var(--vh-large) - var(--vh-small));
+    background: radial-gradient(120% 90% at 50% 40%, var(--emerald-700) 0%, var(--emerald-900) 50%, var(--black) 100%);
+    text-align: center;
+  }
+
+  /* two layers of white particles drift upward at different speeds as you scroll (parallax) */
+  .bg { position: absolute; left: 0; right: 0; top: 0; pointer-events: none; will-change: transform; }
+  .bg-far {
+    bottom: -10%;
+    transform: translate3d(0, calc(var(--p) * -8svh), 0);
+    background-image:
+      radial-gradient(circle at 96.1% 8.2%, rgba(255,255,255,0.33) 0 1.3px, transparent 2.5px),
+      radial-gradient(circle at 97.4% 18.4%, rgba(255,255,255,0.39) 0 1.6px, transparent 2.8px),
+      radial-gradient(circle at 10.5% 25.4%, rgba(255,255,255,0.34) 0 1.2px, transparent 2.4px),
+      radial-gradient(circle at 33.9% 34.0%, rgba(255,255,255,0.40) 0 1.2px, transparent 2.4px),
+      radial-gradient(circle at 1.8% 42.2%, rgba(255,255,255,0.25) 0 1.1px, transparent 2.3px),
+      radial-gradient(circle at 4.7% 55.6%, rgba(255,255,255,0.36) 0 1.3px, transparent 2.5px),
+      radial-gradient(circle at 4.7% 66.7%, rgba(255,255,255,0.29) 0 1.3px, transparent 2.5px),
+      radial-gradient(circle at 66.8% 73.9%, rgba(255,255,255,0.33) 0 1.4px, transparent 2.6px),
+      radial-gradient(circle at 7.6% 81.6%, rgba(255,255,255,0.29) 0 1.1px, transparent 2.3px),
+      radial-gradient(circle at 10.8% 98.4%, rgba(255,255,255,0.38) 0 1.5px, transparent 2.7px);
+  }
+  .bg-near {
+    bottom: -24%;
+    transform: translate3d(0, calc(var(--p) * -22svh), 0);
+    background-image:
+      radial-gradient(circle at 90.8% 10.6%, rgba(255,255,255,0.53) 0 1.8px, transparent 3.0px),
+      radial-gradient(circle at 90.5% 20.6%, rgba(255,255,255,0.55) 0 2.2px, transparent 3.4px),
+      radial-gradient(circle at 98.9% 27.9%, rgba(255,255,255,0.59) 0 2.1px, transparent 3.3px),
+      radial-gradient(circle at 4.0% 47.7%, rgba(255,255,255,0.55) 0 1.8px, transparent 3.0px),
+      radial-gradient(circle at 4.3% 54.5%, rgba(255,255,255,0.47) 0 2.1px, transparent 3.3px),
+      radial-gradient(circle at 75.5% 67.1%, rgba(255,255,255,0.41) 0 2.3px, transparent 3.5px),
+      radial-gradient(circle at 97.0% 84.0%, rgba(255,255,255,0.57) 0 2.4px, transparent 3.6px),
+      radial-gradient(circle at 98.2% 90.2%, rgba(255,255,255,0.43) 0 2.0px, transparent 3.2px);
+  }
+
+  .stage-top, .art, .stage-bottom { position: relative; z-index: 1; }
+  .title { font-size: clamp(2.1rem, 8.8vw, 3.9rem); color: var(--ivory); }
+  .aka { margin-top: 10px; font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(1.15rem, 4.6vw, 1.5rem); color: var(--gold-hi); }
+
+  .art { width: min(82vw, calc(var(--vh-small) * .46), 520px); aspect-ratio: 1; }
+  .ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .track { fill: none; stroke: rgba(201,162,75,.22); stroke-width: 2.4; }
+  .arc { fill: none; stroke: var(--gold-hi); stroke-width: 2.8; stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .js .arc { stroke-dashoffset: 1; }
+  .lbl {
+    font-family: var(--display); font-weight: 600; font-size: 8.5px;
+    fill: var(--gold-hi); text-anchor: middle; dominant-baseline: central;
+  }
+  .lbl-end { font-size: 12px; }
+  .js .lbl { opacity: .28; transition: opacity .35s; }
+  .js .lbl.on { opacity: 1; }
+
+  .portrait {
+    position: absolute; inset: 15%; border-radius: 50%; overflow: hidden;
+    background: var(--emerald-950);
+    box-shadow: 0 0 0 2px rgba(201,162,75,.6), 0 0 calc(var(--p) * 38px) rgba(201,162,75,.28);
+    transform: scale(calc(.93 + var(--p) * .07));
+  }
+  .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; display: block; }
+  /* shown only if daddy.jpg is missing */
+  .monogram {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font-family: var(--display); font-weight: 600; font-size: clamp(3.4rem, 22vw, 7rem); color: var(--gold-hi);
+    background: radial-gradient(circle at 50% 40%, var(--emerald-700), var(--emerald-950));
+  }
+  /* Glow: its own layer, switched by one class. Only opacity and scale change, and CSS transitions
+     reverse smoothly from wherever they are, so scrolling back and forth mid-fade never glitches. */
+  .glow {
+    position: absolute; inset: -8%; border-radius: 50%; pointer-events: none;
+    background: radial-gradient(circle closest-side, rgba(235,208,138,0) 55%, rgba(235,208,138,.37) 62%, rgba(235,208,138,.16) 79%, rgba(235,208,138,0) 100%);
+  }
+  .js .glow { opacity: 0; transform: scale(.94); transition: opacity .4s ease-in, transform .4s ease-in; will-change: opacity, transform; }
+  .js .done .glow { opacity: 1; transform: scale(1); transition: opacity .7s ease-out, transform .7s ease-out; }
+
+  .stage-bottom { display: grid; gap: 10px; justify-items: center; }
+  .date { font-family: var(--display); font-weight: 600; font-size: clamp(1.45rem, 6vw, 2rem); color: var(--gold-hi); }
+  .countdown { min-height: 1.4em; font-size: .95rem; color: rgba(248,245,236,.78); }
+  .hint { display: grid; justify-items: center; gap: 1px; font-size: .85rem; line-height: 1.2; color: rgba(248,245,236,.6); opacity: 0; }
+  .chev { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .js .hint { opacity: calc(1 - var(--p) * 22); }
+
+  @media (max-height: 560px) {
+    .scene, .js .scene { height: auto; }
+    .stage { position: relative; height: auto; min-height: var(--vh-large); gap: 18px; padding-bottom: max(22px, env(safe-area-inset-bottom, 0px)); }
+    .art { width: min(60vw, 300px); }
+    .hint { display: none; }
+  }
+
+  /* ---------- details (white) ---------- */
+  .details { background: var(--ivory); color: #0B1A14; padding: 72px 0 80px; text-align: center; }
+  .details :focus-visible { outline-color: var(--emerald); }
+  .details h2 { font-size: clamp(2rem, 7vw, 2.8rem); color: var(--emerald-700); }
+  .lede { margin: 18px auto 0; max-width: 34ch; font-size: 1.1rem; }
+  .facts { margin: 44px 0 0; padding: 0; display: grid; gap: 0; }
+  .fact { padding: 26px 0; border-top: 1px solid var(--gold); }
+  .fact:last-child { border-bottom: 1px solid var(--gold); }
+  .facts dt { font-family: var(--display); font-style: italic; font-weight: 500; font-size: 1.3rem; color: var(--emerald-700); }
+  .facts dd { margin: 6px 0 0; font-size: 1.2rem; }
+  .facts dd small { display: block; margin-top: 4px; font-size: .98rem; color: #3c4a43; }
+  .swatches { display: flex; justify-content: center; gap: 18px; margin-top: 16px; padding: 0; list-style: none; }
+  .swatches li { display: grid; gap: 6px; justify-items: center; font-size: .9rem; }
+  .dot { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(0,0,0,.25); }
+  .dot-emerald { background: var(--emerald); }
+  .dot-gold { background: var(--gold); }
+  .dot-black { background: var(--black); }
+  .dot-white { background: var(--white); }
+
+  /* ---------- RSVP (black) ---------- */
+  .rsvp { background: var(--black); padding: 76px 0 84px; text-align: center; scroll-margin-top: 0; }
+  .rsvp h2 { font-size: clamp(2.1rem, 8vw, 3rem); color: var(--ivory); }
+  .rsvp .lede { color: rgba(248,245,236,.85); }
+  .choices { display: grid; gap: 14px; margin: 36px auto 0; max-width: 360px; }
+  .setup-note { margin: 18px auto 0; max-width: 40ch; font-size: .95rem; color: var(--gold-hi); }
+
+  .letter { margin: 56px auto 0; max-width: 520px; text-align: left; border: 1px solid rgba(201,162,75,.55); border-radius: 4px; }
+  .letter summary { cursor: pointer; padding: 18px 20px; font-family: var(--display); font-size: 1.35rem; font-weight: 600; color: var(--gold-hi); list-style-position: inside; }
+  .letter-body { padding: 0 20px 22px; display: grid; gap: 12px; color: rgba(248,245,236,.9); font-size: 1rem; }
+  .letter-body a { color: var(--gold-hi); }
+
+  footer { background: var(--emerald-950); padding: 40px 24px max(40px, env(safe-area-inset-bottom, 0px)); text-align: center; }
+  footer p { font-family: var(--display); font-style: italic; font-weight: 500; font-size: 1.5rem; color: var(--gold-hi); }
+
+  /* ---- concept mockup additions ---- */
+  .slides { position: absolute; inset: 0; }
+  .portrait .slide { object-position: 50% 50%; opacity: 0; transition: opacity 1.4s ease; }
+  .portrait .slide.on { opacity: 1; }
+
+  .portrait .slide { transition: opacity .7s ease-out; }
+  .era { display: inline-block; margin: 0 auto 10px; white-space: nowrap;
+    padding: 5px 14px; border-radius: 999px; font: 600 13px/1.2 var(--body); letter-spacing: .02em;
+    color: var(--emerald-950); background: var(--gold-hi); box-shadow: 0 2px 10px rgba(0,0,0,.35); }
+  /* short phones: shrink the circle a little so the extra label line still leaves RSVP on screen */
+  @media (max-height: 620px) {
+    .art { width: min(82vw, calc(var(--vh-small) * .38), 520px); }
+    .era { margin-bottom: 6px; padding: 4px 12px; font-size: 12px; }
+  }
+</style>
+</head>
+
+<body>
+
+<main>
+  <!-- ================= SCROLL SCENE ================= -->
+  <section class="scene" id="scene" aria-label="Invitation">
+    <div class="stage" id="stage">
+      <div class="bg bg-far" aria-hidden="true"></div>
+      <div class="bg bg-near" aria-hidden="true"></div>
+
+      <header class="stage-top">
+        <!-- EDIT: name -->
+        <h1 class="title">Kenneth Mighty's 80th Birthday</h1>
+        <p class="aka">Daddy to some, Uncle Ken to many</p>
+      </header>
+
+      <div class="art">
+        <div class="glow" aria-hidden="true"></div>
+        <svg class="ring" viewBox="-8 -8 256 256" aria-hidden="true" focusable="false"><path class="track" d="M124.02 24.08A96 96 0 0 1 184.98 49.33"/><path class="track" d="M190.67 55.02A96 96 0 0 1 215.92 115.98"/><path class="track" d="M215.92 124.02A96 96 0 0 1 190.67 184.98"/><path class="track" d="M184.98 190.67A96 96 0 0 1 124.02 215.92"/><path class="track" d="M115.98 215.92A96 96 0 0 1 55.02 190.67"/><path class="track" d="M49.33 184.98A96 96 0 0 1 24.08 124.02"/><path class="track" d="M24.08 115.98A96 96 0 0 1 49.33 55.02"/><path class="track" d="M55.02 49.33A96 96 0 0 1 115.98 24.08"/><path class="arc" pathLength="1" d="M124.02 24.08A96 96 0 0 1 184.98 49.33"/><path class="arc" pathLength="1" d="M190.67 55.02A96 96 0 0 1 215.92 115.98"/><path class="arc" pathLength="1" d="M215.92 124.02A96 96 0 0 1 190.67 184.98"/><path class="arc" pathLength="1" d="M184.98 190.67A96 96 0 0 1 124.02 215.92"/><path class="arc" pathLength="1" d="M115.98 215.92A96 96 0 0 1 55.02 190.67"/><path class="arc" pathLength="1" d="M49.33 184.98A96 96 0 0 1 24.08 124.02"/><path class="arc" pathLength="1" d="M24.08 115.98A96 96 0 0 1 49.33 55.02"/><path class="arc" pathLength="1" d="M55.02 49.33A96 96 0 0 1 115.98 24.08"/><text class="lbl" x="198.49" y="41.51">10</text><text class="lbl" x="231.00" y="120.00">20</text><text class="lbl" x="198.49" y="198.49">30</text><text class="lbl" x="120.00" y="231.00">40</text><text class="lbl" x="41.51" y="198.49">50</text><text class="lbl" x="9.00" y="120.00">60</text><text class="lbl" x="41.51" y="41.51">70</text><text class="lbl lbl-end" x="120.00" y="9.00">80</text></svg>
+        <div class="portrait">
+          <div class="monogram" aria-hidden="true">80</div>
+          <!-- Photo: daddy.jpg sits next to this file (square crop, 800px) -->
+          <div class="slides" id="years">
+<img class="slide" src="age-00.jpg" alt="Kenneth Mighty, 1947  |  Age 0" data-label="1947  |  Age 0" width="800" height="800">
+<img class="slide" src="age-20.jpg" alt="Kenneth Mighty, 1966  |  Age 20" data-label="1966  |  Age 20" width="800" height="800">
+<img class="slide" src="age-40.jpg" alt="Kenneth Mighty, 1986  |  Age 40" data-label="1986  |  Age 40" width="800" height="800">
+<img class="slide" src="age-60.jpg" alt="Kenneth Mighty, 2006  |  Age 60" data-label="2006  |  Age 60" width="800" height="800">
+<img class="slide on" src="../daddy.jpg" alt="Kenneth Mighty, 2026  |  Age 80" data-label="2026  |  Age 80" width="800" height="800">
+</div>
+        </div>
+      </div>
+
+      <div class="stage-bottom">
+        <p class="era" id="era" aria-live="polite">2026  |  Age 80</p>
+        <!-- EDIT: date -->
+        <p class="date">Thursday, December 24, 2026</p>
+        <p class="countdown" id="countdown"></p>
+        <a class="btn btn-gold" href="#rsvp">RSVP</a>
+        <p class="hint">Scroll<svg class="chev" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 6l5 5 5-5"/></svg></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DETAILS ================= -->
+  <section class="details" aria-labelledby="details-h">
+    <div class="wrap">
+      <h2 id="details-h">Come celebrate with us</h2>
+      <p class="lede">Eight decades deserve a proper celebration. Family and friends from near and far are invited to gather and honour Kenneth Mighty on Christmas Eve.</p>
+
+      <dl class="facts">
+        <div class="fact">
+          <dt>When</dt>
+          <!-- EDIT: add the start time when you have it -->
+          <dd>Thursday, December 24, 2026<small>Start time to be announced</small></dd>
+        </div>
+        <div class="fact">
+          <dt>Where</dt>
+          <!-- EDIT: venue and address -->
+          <dd>Georgia, USA<small>Venue and address to follow</small></dd>
+        </div>
+        <div class="fact">
+          <dt>What to wear</dt>
+          <dd>
+            Come in the colours
+            <ul class="swatches">
+              <li><span class="dot dot-emerald"></span>Emerald</li>
+              <li><span class="dot dot-gold"></span>Gold</li>
+              <li><span class="dot dot-black"></span>Black</li>
+              <li><span class="dot dot-white"></span>White</li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ================= RSVP ================= -->
+  <section class="rsvp" id="rsvp" aria-labelledby="rsvp-h">
+    <div class="wrap">
+      <h2 id="rsvp-h">Will you be there?</h2>
+      <!-- EDIT: reply-by date lives in CONFIG at the bottom of this file -->
+      <p class="lede">Please reply by <span id="deadline">October 25</span> so we can plan for everyone.</p>
+
+      <div class="choices">
+        <a class="btn btn-gold" id="going" href="#rsvp">Going</a>
+        <a class="btn btn-line" id="notgoing" href="#rsvp">Can't make it</a>
+      </div>
+      <p class="setup-note" id="setup-note" hidden>Draft note: paste your Google Form links into CONFIG at the bottom of this file to turn these buttons on.</p>
+
+      <details class="letter">
+        <summary>Coming from Jamaica? We can send you an invitation letter</summary>
+        <div class="letter-body">
+          <p>Choose Going, then answer yes to the invitation letter question and we will be in touch for the details we need.</p>
+          <p>A letter supports your visa application but does not guarantee a visa. Please book your interview at the US Embassy in Kingston as early as you can, because appointment times change.</p>
+          <p><a href="https://travel.state.gov/content/travel/en/us-visas/tourism-visit/visitor.html" rel="noopener">Official US visitor visa information</a></p>
+        </div>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>With love from the whole family</p>
+</footer>
+
+<script>
+  /* ============ CONFIG - edit these ============ */
+  const CONFIG = {
+    rsvpGoingUrl:    "https://docs.google.com/forms/d/e/1FAIpQLSfhrVUJf8jPesE2wkRMMf9okEBgGKXqEUDcEq7Kc5MkZD4-yg/viewform?usp=pp_url&entry.434466022=Going",   /* prefilled "Going" link printed by the Apps Script */
+    rsvpNotGoingUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfhrVUJf8jPesE2wkRMMf9okEBgGKXqEUDcEq7Kc5MkZD4-yg/viewform?usp=pp_url&entry.434466022=Can't+make+it",   /* prefilled "Can't make it" link printed by the Apps Script */
+    rsvpFormUrl:     "https://docs.google.com/forms/d/e/1FAIpQLSfhrVUJf8jPesE2wkRMMf9okEBgGKXqEUDcEq7Kc5MkZD4-yg/viewform",   /* plain form link, used if the two above are empty */
+    partyDate:       "2026-12-24T00:00:00",
+    rsvpDeadline:    "October 25",
+    decades:         8
+  };
+  /* ============================================== */
+
+  (function () {
+    const scene = document.getElementById("scene");
+    const stage = document.getElementById("stage");
+    const arcs = Array.from(document.querySelectorAll(".arc"));
+    const labels = Array.from(document.querySelectorAll(".lbl"));
+    const clamp = (v) => Math.min(1, Math.max(0, v));
+
+    /* RSVP buttons */
+    const going = document.getElementById("going");
+    const notGoing = document.getElementById("notgoing");
+    const note = document.getElementById("setup-note");
+    const goingUrl = CONFIG.rsvpGoingUrl || CONFIG.rsvpFormUrl;
+    const notGoingUrl = CONFIG.rsvpNotGoingUrl || CONFIG.rsvpFormUrl;
+    if (goingUrl && notGoingUrl) {
+      going.href = goingUrl;
+      notGoing.href = notGoingUrl;
+    } else {
+      note.hidden = false;
+      [going, notGoing].forEach((b) => b.addEventListener("click", (e) => e.preventDefault()));
+    }
+    document.getElementById("deadline").textContent = CONFIG.rsvpDeadline;
+
+    /* Countdown */
+    const cd = document.getElementById("countdown");
+    const days = Math.ceil((new Date(CONFIG.partyDate) - new Date()) / 86400000);
+    if (days > 1) cd.textContent = days + " days to go";
+    else if (days === 1) cd.textContent = "Tomorrow";
+    else if (days === 0) cd.textContent = "Today";
+
+    /* Scroll scene: one progress value (0 to 1) drives the ring, photo, glow and parallax */
+    if (!document.documentElement.classList.contains("js")) return;
+
+    /* Glow thresholds: on once the ring is complete (about 0.88), off only after scrolling back past 0.84.
+       The gap between the two stops flicker when the scroll position jitters near the edge. */
+    const GLOW_ON = 0.89;
+    const GLOW_OFF = 0.84;
+    let glowOn = false;
+
+    function render(p) {
+      scene.style.setProperty("--p", p.toFixed(4));
+      const ringP = clamp((p - 0.04) / 0.84);
+      arcs.forEach((arc, i) => {
+        const v = clamp(ringP * CONFIG.decades - i);
+        arc.style.strokeDashoffset = (1 - v).toFixed(4);
+        if (labels[i]) labels[i].classList.toggle("on", v >= 0.999);
+      });
+      if (!glowOn && p >= GLOW_ON) { glowOn = true; stage.classList.add("done"); }
+      else if (glowOn && p < GLOW_OFF) { glowOn = false; stage.classList.remove("done"); }
+    }
+
+    let queued = false;
+    function update() {
+      queued = false;
+      const range = scene.offsetHeight - stage.offsetHeight;
+      const p = range > 0 ? clamp(-scene.getBoundingClientRect().top / range) : 1;
+      render(p);
+    }
+    function onScroll() {
+      if (!queued) { queued = true; requestAnimationFrame(update); }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    update();
+  })();
+</script>
+<script>
+  (function () {
+    if (!document.documentElement.classList.contains("js")) return;
+    const scene = document.getElementById("scene"), stage = document.getElementById("stage");
+    const imgs = Array.from(document.querySelectorAll("#years .slide")), era = document.getElementById("era");
+    const clamp = (v) => Math.min(1, Math.max(0, v));
+    let cur = -1;
+    function show(i) {
+      if (i === cur) return;
+      imgs.forEach((im, k) => im.classList.toggle("on", k === i));
+      era.textContent = imgs[i].dataset.label; cur = i;
+    }
+    /* Decades follow the ring. The final photo (80) is tied to the ring's glow,
+       using the page's own "done" class, so the two always switch together. */
+    const last = imgs.length - 1;
+    function update() {
+      if (stage.classList.contains("done")) return show(last);
+      const range = scene.offsetHeight - stage.offsetHeight;
+      const p = range > 0 ? clamp(-scene.getBoundingClientRect().top / range) : 1;
+      const ringP = clamp((p - 0.04) / 0.84);
+      show(Math.min(last - 1, Math.floor(ringP * last + 1e-6)));
+    }
+    new MutationObserver(update).observe(stage, { attributes: true, attributeFilter: ["class"] });
+    window.addEventListener("scroll", function () { requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  })();
+</script>
+</body>
+</html>
