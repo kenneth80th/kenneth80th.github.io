@@ -79,13 +79,19 @@
   :focus-visible { outline: 3px solid var(--gold-hi); outline-offset: 3px; }
 
   /* ---------- scroll scene ---------- */
-  .scene { --p: 1; position: relative; height: 100vh; height: 100svh; background: var(--black); }
-  .js .scene { height: 280vh; height: 280svh; }
+  /* Phone browsers show and hide their address bar while you scroll. "Large" is the screen with the bar
+     hidden, "small" is with it showing. The stage is as tall as the large screen so no black strip can
+     appear, and the difference is added as bottom padding so the content stays put. */
+  :root { --vh-large: 100vh; --vh-small: 100vh; }
+  @supports (height: 100lvh) { :root { --vh-large: 100lvh; --vh-small: 100svh; } }
+
+  .scene { --p: 1; position: relative; height: var(--vh-large); background: var(--black); }
+  .js .scene { height: calc(var(--vh-large) * 2.8); }
 
   .stage {
-    position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden;
+    position: sticky; top: 0; height: var(--vh-large); overflow: hidden;
     display: grid; grid-template-rows: auto 1fr auto; justify-items: center; align-items: center;
-    padding: max(22px, env(safe-area-inset-top, 0px)) 20px max(22px, env(safe-area-inset-bottom, 0px));
+    padding: max(22px, env(safe-area-inset-top, 0px)) 20px calc(max(22px, env(safe-area-inset-bottom, 0px)) + var(--vh-large) - var(--vh-small));
     background: radial-gradient(120% 90% at 50% 40%, var(--emerald-700) 0%, var(--emerald-900) 50%, var(--black) 100%);
     text-align: center;
   }
@@ -125,7 +131,7 @@
   .title { font-size: clamp(2.1rem, 8.8vw, 3.9rem); color: var(--ivory); }
   .aka { margin-top: 10px; font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(1.15rem, 4.6vw, 1.5rem); color: var(--gold-hi); }
 
-  .art { width: min(82vw, 46vh, 520px); width: min(82vw, 46svh, 520px); aspect-ratio: 1; }
+  .art { width: min(82vw, calc(var(--vh-small) * .46), 520px); aspect-ratio: 1; }
   .ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
   .track { fill: none; stroke: rgba(201,162,75,.22); stroke-width: 2.4; }
   .arc { fill: none; stroke: var(--gold-hi); stroke-width: 2.8; stroke-dasharray: 1; stroke-dashoffset: 0; }
@@ -155,7 +161,7 @@
      reverse smoothly from wherever they are, so scrolling back and forth mid-fade never glitches. */
   .glow {
     position: absolute; inset: -8%; border-radius: 50%; pointer-events: none;
-    background: radial-gradient(circle closest-side, rgba(235,208,138,0) 55%, rgba(235,208,138,.46) 62%, rgba(235,208,138,.2) 79%, rgba(235,208,138,0) 100%);
+    background: radial-gradient(circle closest-side, rgba(235,208,138,0) 55%, rgba(235,208,138,.37) 62%, rgba(235,208,138,.16) 79%, rgba(235,208,138,0) 100%);
   }
   .js .glow { opacity: 0; transform: scale(.94); transition: opacity .4s ease-in, transform .4s ease-in; will-change: opacity, transform; }
   .js .done .glow { opacity: 1; transform: scale(1); transition: opacity .7s ease-out, transform .7s ease-out; }
@@ -169,7 +175,7 @@
 
   @media (max-height: 560px) {
     .scene, .js .scene { height: auto; }
-    .stage { position: relative; height: auto; min-height: 100vh; gap: 18px; }
+    .stage { position: relative; height: auto; min-height: var(--vh-large); gap: 18px; padding-bottom: max(22px, env(safe-area-inset-bottom, 0px)); }
     .art { width: min(60vw, 300px); }
     .hint { display: none; }
   }
@@ -372,7 +378,7 @@
     let queued = false;
     function update() {
       queued = false;
-      const range = scene.offsetHeight - window.innerHeight;
+      const range = scene.offsetHeight - stage.offsetHeight;
       const p = range > 0 ? clamp(-scene.getBoundingClientRect().top / range) : 1;
       render(p);
     }
