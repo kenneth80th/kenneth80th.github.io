@@ -199,6 +199,11 @@
   .dot-gold { background: var(--gold); }
   .dot-black { background: var(--black); }
   .dot-white { background: var(--white); }
+  .dot-black-gold { background: linear-gradient(135deg, var(--black) 50%, var(--gold) 50%); }
+  .swatches.dress { gap: 40px; margin-top: 12px; }
+  .swatches.dress li { font-size: 1rem; }
+  .swatches.dress b { display: block; font-family: var(--display); font-style: italic; font-weight: 600; font-size: 1.15rem; color: var(--emerald-700); }
+  .map-link { display: inline-block; margin-top: 10px; font-size: .95rem; font-weight: 600; color: var(--emerald-700); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--gold); }
 
   /* ---------- RSVP (black) ---------- */
   .rsvp { background: var(--black); padding: 76px 0 84px; text-align: center; scroll-margin-top: 0; }
@@ -283,23 +288,18 @@
       <dl class="facts">
         <div class="fact">
           <dt>When</dt>
-          <!-- EDIT: add the start time when you have it -->
-          <dd>Thursday, December 24, 2026<small>Start time to be announced</small></dd>
+          <dd>Thursday, December 24, 2026<small>3:00 pm sharp</small></dd>
         </div>
         <div class="fact">
           <dt>Where</dt>
-          <!-- EDIT: venue and address -->
-          <dd>Georgia, USA<small>Venue and address to follow</small></dd>
+          <dd>2621 Walton Downs Road<small>Monroe, Georgia 30655</small><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=2621+Walton+Downs+Road%2C+Monroe%2C+GA+30655" target="_blank" rel="noopener">Open in Maps</a></dd>
         </div>
         <div class="fact">
           <dt>What to wear</dt>
           <dd>
-            Come in the colours
-            <ul class="swatches">
-              <li><span class="dot dot-emerald"></span>Emerald</li>
-              <li><span class="dot dot-gold"></span>Gold</li>
-              <li><span class="dot dot-black"></span>Black</li>
-              <li><span class="dot dot-white"></span>White</li>
+            <ul class="swatches dress">
+              <li><span class="dot dot-gold"></span><b>Ladies</b>Gold dresses</li>
+              <li><span class="dot dot-black-gold"></span><b>Gentlemen</b>Black and gold</li>
             </ul>
           </dd>
         </div>
