@@ -170,7 +170,7 @@
   .stage-bottom { display: grid; gap: 10px; justify-items: center; }
   .date { font-family: var(--display); font-weight: 600; font-size: clamp(1.45rem, 6vw, 2rem); color: var(--gold-hi); }
   .countdown { min-height: 1.4em; font-size: .95rem; color: rgba(248,245,236,.78); }
-  .hint { display: grid; justify-items: center; gap: 1px; font-size: .85rem; line-height: 1.2; color: rgba(248,245,236,.6); opacity: 0; }
+  .hint { display: inline-flex; align-items: center; justify-content: center; gap: 4px; margin-top: -4px; font-size: .9rem; line-height: 1.2; color: rgba(248,245,236,.82); opacity: 0; }
   .chev { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
   .js .hint { opacity: calc(1 - var(--p) * 22); }
 
@@ -226,10 +226,13 @@
   .portrait .slide.on { opacity: 1; }
 
   .portrait .slide { transition: opacity .7s ease-out; }
-  .era { display: inline-block; margin: 0 auto 10px; white-space: nowrap;
+  .era { display: inline-block; margin: 0 auto 2px; white-space: nowrap;
     padding: 5px 14px; border-radius: 999px; font: 600 13px/1.2 var(--body); letter-spacing: .02em;
     color: var(--emerald-950); background: var(--gold-hi); box-shadow: 0 2px 10px rgba(0,0,0,.35); }
   /* short phones: shrink the circle a little so the extra label line still leaves RSVP on screen */
+  @media (max-height: 620px) and (min-height: 561px) {
+    .stage-bottom { gap: 6px; }
+  }
   @media (max-height: 620px) {
     .art { width: min(82vw, calc(var(--vh-small) * .38), 520px); }
     .era { margin-bottom: 6px; padding: 4px 12px; font-size: 12px; }
@@ -270,11 +273,11 @@
 
       <div class="stage-bottom">
         <p class="era" id="era" aria-live="polite">2026  |  Age 80</p>
+        <p class="hint">Scroll to see him through the years<svg class="chev" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 6l5 5 5-5"/></svg></p>
         <!-- EDIT: date -->
         <p class="date">Thursday, December 24, 2026</p>
         <p class="countdown" id="countdown"></p>
         <a class="btn btn-gold" href="#rsvp">RSVP</a>
-        <p class="hint">Scroll<svg class="chev" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M3 6l5 5 5-5"/></svg></p>
       </div>
     </div>
   </section>
@@ -439,7 +442,10 @@
     new MutationObserver(update).observe(stage, { attributes: true, attributeFilter: ["class"] });
     window.addEventListener("scroll", function () { requestAnimationFrame(update); }, { passive: true });
     window.addEventListener("resize", update);
+    /* Show the right photo instantly on load, without fading in from the age-80 photo */
+    imgs.forEach((im) => { im.style.transition = "none"; });
     update();
+    requestAnimationFrame(() => requestAnimationFrame(() => imgs.forEach((im) => { im.style.transition = ""; })));
   })();
 </script>
 </body>
