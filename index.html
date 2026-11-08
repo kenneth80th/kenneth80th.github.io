@@ -128,7 +128,8 @@
       radial-gradient(circle at 98.2% 90.2%, rgba(255,255,255,0.43) 0 2.0px, transparent 3.2px);
   }
 
-  .stage-top, .art, .stage-bottom { position: relative; z-index: 1; }
+  .stage-top, .art, .art-group, .stage-bottom { position: relative; z-index: 1; }
+  .art-group { display: grid; justify-items: center; gap: 4px; }
   .title { font-size: clamp(2.1rem, 8.8vw, 3.9rem); color: var(--ivory); }
   .aka { margin-top: 10px; font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(1.15rem, 4.6vw, 1.5rem); color: var(--gold-hi); }
 
@@ -170,7 +171,7 @@
   .stage-bottom { display: grid; gap: 10px; justify-items: center; }
   .date { font-family: var(--display); font-weight: 600; font-size: clamp(1.45rem, 6vw, 2rem); color: var(--gold-hi); }
   .countdown { min-height: 1.4em; font-size: .95rem; color: rgba(248,245,236,.78); }
-  .hint { display: inline-flex; align-items: center; justify-content: center; gap: 4px; margin-top: -4px; font-size: .9rem; line-height: 1.2; color: rgba(248,245,236,.82); opacity: 0; }
+  .hint { display: inline-flex; align-items: center; justify-content: center; gap: 4px; margin-top: 0; font-size: .9rem; line-height: 1.2; color: rgba(248,245,236,.82); opacity: 0; }
   .chev { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
   .js .hint { opacity: calc(1 - var(--p) * 22); }
 
@@ -226,7 +227,7 @@
   .portrait .slide.on { opacity: 1; }
 
   .portrait .slide { transition: opacity .7s ease-out; }
-  .era { display: inline-block; margin: 0 auto 2px; white-space: nowrap;
+  .era { display: inline-block; margin: 6px auto 0; white-space: nowrap;
     padding: 5px 14px; border-radius: 999px; font: 600 13px/1.2 var(--body); letter-spacing: .02em;
     color: var(--emerald-950); background: var(--gold-hi); box-shadow: 0 2px 10px rgba(0,0,0,.35); }
   /* short phones: shrink the circle a little so the extra label line still leaves RSVP on screen */
@@ -236,6 +237,9 @@
   @media (max-height: 620px) {
     .art { width: min(82vw, calc(var(--vh-small) * .38), 520px); }
     .era { margin-bottom: 6px; padding: 4px 12px; font-size: 12px; }
+  }
+  @media (max-height: 620px) and (min-height: 561px) {
+    .art { width: min(82vw, calc(var(--vh-small) * .34), 520px); }
   }
 </style>
 </head>
@@ -255,6 +259,7 @@
         <p class="aka">Daddy to some, Uncle Ken to many</p>
       </header>
 
+      <div class="art-group">
       <div class="art">
         <div class="glow" aria-hidden="true"></div>
         <svg class="ring" viewBox="-8 -8 256 256" aria-hidden="true" focusable="false"><path class="track" d="M124.02 24.08A96 96 0 0 1 184.98 49.33"/><path class="track" d="M190.67 55.02A96 96 0 0 1 215.92 115.98"/><path class="track" d="M215.92 124.02A96 96 0 0 1 190.67 184.98"/><path class="track" d="M184.98 190.67A96 96 0 0 1 124.02 215.92"/><path class="track" d="M115.98 215.92A96 96 0 0 1 55.02 190.67"/><path class="track" d="M49.33 184.98A96 96 0 0 1 24.08 124.02"/><path class="track" d="M24.08 115.98A96 96 0 0 1 49.33 55.02"/><path class="track" d="M55.02 49.33A96 96 0 0 1 115.98 24.08"/><path class="arc" pathLength="1" d="M124.02 24.08A96 96 0 0 1 184.98 49.33"/><path class="arc" pathLength="1" d="M190.67 55.02A96 96 0 0 1 215.92 115.98"/><path class="arc" pathLength="1" d="M215.92 124.02A96 96 0 0 1 190.67 184.98"/><path class="arc" pathLength="1" d="M184.98 190.67A96 96 0 0 1 124.02 215.92"/><path class="arc" pathLength="1" d="M115.98 215.92A96 96 0 0 1 55.02 190.67"/><path class="arc" pathLength="1" d="M49.33 184.98A96 96 0 0 1 24.08 124.02"/><path class="arc" pathLength="1" d="M24.08 115.98A96 96 0 0 1 49.33 55.02"/><path class="arc" pathLength="1" d="M55.02 49.33A96 96 0 0 1 115.98 24.08"/><text class="lbl" x="198.49" y="41.51">10</text><text class="lbl" x="231.00" y="120.00">20</text><text class="lbl" x="198.49" y="198.49">30</text><text class="lbl" x="120.00" y="231.00">40</text><text class="lbl" x="41.51" y="198.49">50</text><text class="lbl" x="9.00" y="120.00">60</text><text class="lbl" x="41.51" y="41.51">70</text><text class="lbl lbl-end" x="120.00" y="9.00">80</text></svg>
@@ -270,10 +275,11 @@
 </div>
         </div>
       </div>
-
-      <div class="stage-bottom">
         <p class="era" id="era" aria-live="polite">2026  |  Age 80</p>
         <p class="hint">Scroll to see him through the years<svg class="chev" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 6l5 5 5-5"/></svg></p>
+      </div>
+
+      <div class="stage-bottom">
         <!-- EDIT: date -->
         <p class="date">Thursday, December 24, 2026</p>
         <p class="countdown" id="countdown"></p>
